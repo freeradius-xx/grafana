@@ -1,20 +1,38 @@
 purge_other_datasources: false
+# purge data source not listed in configuration.
+# not recommended in HA setups if config can
+# can differ between instances.
 datasources:
   - name: Graphite
+    # <string>name of the datasource
     type: graphite
+    # <string> datasource type
     access: proxy
+    # <string> access mode. direct or proxy
     url: http://localhost:8080
-    password:  #string
-    user:  #string
+    # <string> url
+    password:
+    # <string> database password, if used
+    user:
+    # <string> database user, if used
     database:  #string
-    basic_auth: #bool
-    basic_authUser: #string
-    basic_auth_password: #string
-    with_credentials: #bool
-    is_default: true #bool
-    json_data: '{"graphiteVersion":"0.9"}' # string json
-    secure_json_fields: '' #string json
+    # <string> database name, if used
+    basic_auth:
+    # <bool> enable/disable basic auth
+    basic_authUser:
+    # <string> basic auth username
+    basic_auth_password:
+    # <string> basic auth password
+    with_credentials:
+    # <bool> enable/disable with credentials headers
+    is_default:
+    # <bool> mark as default datasource. Max one per org
+    json_data: '{"graphiteVersion":"0.9"}'
+    # <string> json data
+    secure_json_fields: ''
+    # <string> json object of data that will be encrypted in UI.
   - name: Prometheus
     type: prometheus
     access: proxy
     url: http://localhost:9090
+
